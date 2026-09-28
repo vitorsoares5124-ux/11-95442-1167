@@ -214,8 +214,10 @@ p{
    (arte 942x2048, mais alta que o container -> topo cortado em 35-111px)
    e botao com margin-top fixo em px (445/441/441/428px) que nao acompanha
    a largura -> cai em cima do box "Frete Gratis".
-   Fix proporcional: altura do card segue a arte; botao em % no vao rosa
-   (medido na arte: Frete termina ~68.2%, VIP comeca ~77.5%). */
+   A arte PNG tem margens transparentes (medido via canal alfa: regiao opaca
+   x80-860/y67-1788); o fundo recorta so a regiao opaca (size 120.6% + pos
+   50%/20.5%) e a altura do card segue ela. Botao em % no vao rosa
+   (Frete termina ~68.2%, VIP comeca ~77.5% da arte). */
 @media (max-width: 767px) {
     .elementor-1362 .elementor-element.elementor-element-dab9a36 {
         transform: none !important;
@@ -240,39 +242,41 @@ p{
         --min-height: 0px !important;
         min-height: 0 !important;
         max-height: none !important;
-        aspect-ratio: 942 / 2048 !important;
+        aspect-ratio: 781 / 1721 !important;
         overflow: visible !important;
         --width: 100% !important;
         width: 100% !important;
         max-width: 430px !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 14px !important;
         padding: 0 !important;
         transform: none !important;
-        background-size: 100% 100% !important;
-        background-position: top center !important;
+        background-size: 120.6% auto !important;
+        background-position: 50% 20.5% !important;
         background-repeat: no-repeat !important;
     }
     .elementor-1362 .elementor-element.elementor-element-b8eb752:not(.elementor-motion-effects-element-type-background),
     .elementor-1362 .elementor-element.elementor-element-feb5d5b:not(.elementor-motion-effects-element-type-background),
     .elementor-1362 .elementor-element.elementor-element-79bf1a4:not(.elementor-motion-effects-element-type-background),
     .elementor-1362 .elementor-element.elementor-element-fba3e34:not(.elementor-motion-effects-element-type-background) {
-        background-size: 100% 100% !important;
-        background-position: top center !important;
+        background-size: 120.6% auto !important;
+        background-position: 50% 20.5% !important;
         background-repeat: no-repeat !important;
     }
     /* BOTAO: sem top/bottom/transform de posicionamento; ancora em % no vao
-       rosa abaixo do "Frete Gratis" (acompanha qualquer largura) */
+       rosa abaixo do "Frete Gratis" (acompanha qualquer largura).
+       Largura 91%: mesma proporcao do layout original (botao 250px sobre
+       fundo 330px -> 91% da regiao opaca do card). */
     .elementor-1362 .elementor-element.elementor-element-a2a1f98,
     .elementor-1362 .elementor-element.elementor-element-9c581d0,
     .elementor-1362 .elementor-element.elementor-element-47c1285,
     .elementor-1362 .elementor-element.elementor-element-84f2fce {
         position: absolute !important;
-        top: 69% !important;
+        top: 79% !important;
         bottom: auto !important;
-        left: 12% !important;
-        width: 76% !important;
+        left: 4.5% !important;
+        width: 91% !important;
         margin: 0 !important;
         padding: 0 !important;
         transform: none !important;
