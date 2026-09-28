@@ -221,7 +221,7 @@ p{
     .elementor-1362 .elementor-element.elementor-element-dab9a36 {
         display: flex !important;
         flex-direction: column !important;
-        gap: 12px !important;
+        gap: 16px !important;
         transform: none !important;
         overflow: visible !important;
         --width: 100% !important;
@@ -236,7 +236,9 @@ p{
     }
     /* CARD: position relative, altura automatica proporcional a arte inteira,
        sem corte (borda superior/inferior e cantos arredondados visiveis).
-       Sem margin-top/bottom: espacamento unico via gap do container. */
+       Arte com area transparente no topo (60px) e na base (259px): margem
+       negativa controlada (-33.86% = 319/942 da largura) compensa o vazio,
+       restando so o gap de 16px do container. Dimensoes intactas. */
     .elementor-1362 .elementor-element.elementor-element-b8eb752,
     .elementor-1362 .elementor-element.elementor-element-feb5d5b,
     .elementor-1362 .elementor-element.elementor-element-79bf1a4,
@@ -254,12 +256,26 @@ p{
         margin-top: 0 !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        margin-bottom: 0 !important;
+        margin-bottom: calc(-33.86%) !important;
         padding: 0 !important;
         transform: none !important;
         background-size: 100% 100% !important;
         background-position: top center !important;
         background-repeat: no-repeat !important;
+    }
+    /* Ultimo card: compensa so o transparente da base (259/942 = 27.49%);
+       com o padding-top 8px da secao seguinte, titulo fica a 24px. */
+    .elementor-1362 .elementor-element.elementor-element-fba3e34 {
+        margin-bottom: calc(16px - 27.49%) !important;
+    }
+    /* Secao do titulo: margin-top 240px -> 0 e padding-top 60px -> 8px
+       (era a maior fonte do buraco antes do titulo). */
+    .elementor-1362 .elementor-element.elementor-element-17edace1 {
+        height: auto !important;
+        --margin-top: 0px !important;
+        margin-top: 0 !important;
+        --padding-top: 8px !important;
+        padding-top: 8px !important;
     }
     .elementor-1362 .elementor-element.elementor-element-b8eb752:not(.elementor-motion-effects-element-type-background),
     .elementor-1362 .elementor-element.elementor-element-feb5d5b:not(.elementor-motion-effects-element-type-background),
