@@ -209,8 +209,13 @@ p{
 .elementor-1362 .elementor-element.elementor-element-5c5c0a63 .elementor-heading-title a:visited,
 .elementor-1362 .elementor-element.elementor-element-5c5c0a63 .elementor-heading-title a:hover,
 .elementor-1362 .elementor-element.elementor-element-5c5c0a63 .elementor-heading-title a:active{color:#F1F1F1;text-decoration:none;}
-/* Fix tarja branca no iPhone: containers de 500px + scale(1.1) estouravam a viewport e o Safari mostrava a sobra ao tirar o zoom.
-   Ajuste: mantem sem overflow, mas com cards mais largos como no original (gutter pequeno + bg 100%). */
+/* FIX mobile cards de oferta (360/390/430px): sem sobreposicao e sem corte.
+   Causa raiz: card com min-height fixo (670px) + fundo 100% auto centralizado
+   (arte 942x2048, mais alta que o container -> topo cortado em 35-111px)
+   e botao com margin-top fixo em px (445/441/441/428px) que nao acompanha
+   a largura -> cai em cima do box "Frete Gratis".
+   Fix proporcional: altura do card segue a arte; botao em % no vao rosa
+   (medido na arte: Frete termina ~68.2%, VIP comeca ~77.5%). */
 @media (max-width: 767px) {
     .elementor-1362 .elementor-element.elementor-element-dab9a36 {
         transform: none !important;
@@ -225,26 +230,78 @@ p{
         padding-left: 10px !important;
         padding-right: 10px !important;
     }
+    /* CARD: position relative, altura automatica proporcional a arte, sem corte */
     .elementor-1362 .elementor-element.elementor-element-b8eb752,
     .elementor-1362 .elementor-element.elementor-element-feb5d5b,
     .elementor-1362 .elementor-element.elementor-element-79bf1a4,
     .elementor-1362 .elementor-element.elementor-element-fba3e34 {
-        transform: none !important;
-        overflow: hidden !important;
-        overflow: clip !important;
+        position: relative !important;
+        height: auto !important;
+        --min-height: 0px !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        aspect-ratio: 942 / 2048 !important;
+        overflow: visible !important;
         --width: 100% !important;
         width: 100% !important;
         max-width: 430px !important;
         margin-left: auto !important;
         margin-right: auto !important;
         margin-bottom: 20px !important;
-        background-size: 100% auto !important;
+        padding: 0 !important;
+        transform: none !important;
+        background-size: 100% 100% !important;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
     }
     .elementor-1362 .elementor-element.elementor-element-b8eb752:not(.elementor-motion-effects-element-type-background),
     .elementor-1362 .elementor-element.elementor-element-feb5d5b:not(.elementor-motion-effects-element-type-background),
     .elementor-1362 .elementor-element.elementor-element-79bf1a4:not(.elementor-motion-effects-element-type-background),
     .elementor-1362 .elementor-element.elementor-element-fba3e34:not(.elementor-motion-effects-element-type-background) {
-        background-size: 100% auto !important;
+        background-size: 100% 100% !important;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
+    }
+    /* BOTAO: sem top/bottom/transform de posicionamento; ancora em % no vao
+       rosa abaixo do "Frete Gratis" (acompanha qualquer largura) */
+    .elementor-1362 .elementor-element.elementor-element-a2a1f98,
+    .elementor-1362 .elementor-element.elementor-element-9c581d0,
+    .elementor-1362 .elementor-element.elementor-element-47c1285,
+    .elementor-1362 .elementor-element.elementor-element-84f2fce {
+        position: absolute !important;
+        top: 69% !important;
+        bottom: auto !important;
+        left: 12% !important;
+        width: 76% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: none !important;
+        z-index: 2 !important;
+    }
+    .elementor-1362 .elementor-element.elementor-element-a2a1f98 > .elementor-widget-container,
+    .elementor-1362 .elementor-element.elementor-element-9c581d0 > .elementor-widget-container,
+    .elementor-1362 .elementor-element.elementor-element-47c1285 > .elementor-widget-container,
+    .elementor-1362 .elementor-element.elementor-element-84f2fce > .elementor-widget-container {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .elementor-1362 .elementor-element.elementor-element-a2a1f98 .elementor-button,
+    .elementor-1362 .elementor-element.elementor-element-9c581d0 .elementor-button,
+    .elementor-1362 .elementor-element.elementor-element-47c1285 .elementor-button,
+    .elementor-1362 .elementor-element.elementor-element-84f2fce .elementor-button {
+        position: static;
+        display: flex;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 44px;
+        /* respiro embutido na ancora top:69% do wrapper; 12px aqui empurraria
+           o botao para dentro do box VIP em 360px (folga medida: 2.8px) */
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        top: auto;
+        bottom: auto;
+        transform: none;
     }
     .elementor-1362 .elementor-element.elementor-element-b7f86e1 {
         --width: 100% !important;
