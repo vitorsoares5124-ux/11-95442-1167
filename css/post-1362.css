@@ -209,21 +209,42 @@ p{
 .elementor-1362 .elementor-element.elementor-element-5c5c0a63 .elementor-heading-title a:visited,
 .elementor-1362 .elementor-element.elementor-element-5c5c0a63 .elementor-heading-title a:hover,
 .elementor-1362 .elementor-element.elementor-element-5c5c0a63 .elementor-heading-title a:active{color:#F1F1F1;text-decoration:none;}
-/* Fix tarja branca no iPhone: containers de 500px + scale(1.1) estouravam a viewport e o Safari mostrava a sobra ao tirar o zoom */
+/* Fix tarja branca no iPhone: containers de 500px + scale(1.1) estouravam a viewport e o Safari mostrava a sobra ao tirar o zoom.
+   Ajuste: mantem sem overflow, mas com cards mais largos como no original (gutter pequeno + bg 100%). */
 @media (max-width: 767px) {
-    .elementor-1362 .elementor-element.elementor-element-b8eb752,
-    .elementor-1362 .elementor-element.elementor-element-feb5d5b,
-    .elementor-1362 .elementor-element.elementor-element-79bf1a4,
-    .elementor-1362 .elementor-element.elementor-element-fba3e34,
     .elementor-1362 .elementor-element.elementor-element-dab9a36 {
         transform: none !important;
-        overflow: hidden !important;
         overflow: clip !important;
         --width: 100% !important;
         width: 100% !important;
         max-width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        --padding-left: 10px !important;
+        --padding-right: 10px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    .elementor-1362 .elementor-element.elementor-element-b8eb752,
+    .elementor-1362 .elementor-element.elementor-element-feb5d5b,
+    .elementor-1362 .elementor-element.elementor-element-79bf1a4,
+    .elementor-1362 .elementor-element.elementor-element-fba3e34 {
+        transform: none !important;
+        overflow: hidden !important;
+        overflow: clip !important;
+        --width: 100% !important;
+        width: 100% !important;
+        max-width: 430px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 20px !important;
+        background-size: 100% auto !important;
+    }
+    .elementor-1362 .elementor-element.elementor-element-b8eb752:not(.elementor-motion-effects-element-type-background),
+    .elementor-1362 .elementor-element.elementor-element-feb5d5b:not(.elementor-motion-effects-element-type-background),
+    .elementor-1362 .elementor-element.elementor-element-79bf1a4:not(.elementor-motion-effects-element-type-background),
+    .elementor-1362 .elementor-element.elementor-element-fba3e34:not(.elementor-motion-effects-element-type-background) {
+        background-size: 100% auto !important;
     }
     .elementor-1362 .elementor-element.elementor-element-b7f86e1 {
         --width: 100% !important;
@@ -237,4 +258,35 @@ p{
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
+}
+/* Botao WhatsApp no rodape - padrao da referencia */
+.elementor-1362 .elementor-element.elementor-element-rvwhats .elementor-button {
+    background-color: #25D366;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    border-radius: 30px 30px 30px 30px;
+    padding: 12px 20px 12px 20px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+}
+.elementor-1362 .elementor-element.elementor-element-rvwhats .elementor-button:hover,
+.elementor-1362 .elementor-element.elementor-element-rvwhats .elementor-button:focus-visible {
+    background-color: #1EBE5B;
+    color: #FFFFFF;
+}
+.elementor-1362 .elementor-element.elementor-element-rvwhats .elementor-button .elementor-button-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #FFFFFF;
+}
+.elementor-1362 .elementor-element.elementor-element-rvwhats {
+    text-align: center;
+    margin-top: 10px;
 }
